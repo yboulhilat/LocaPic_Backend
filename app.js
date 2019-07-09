@@ -10,12 +10,15 @@ passport.use(new FacebookStrategy({
   clientSecret: "f3950a4a409067705d249c010de9f7d2",
   callbackURL: 'https://locapic-lacapsule2020.herokuapp.com/auth/facebook/callback',
   profileFields: ['id', 'first_name', 'last_name', 'email'],
+  passReqToCallback: true
+
 },
-  function (accessToken, refreshToken, profile, done) {
+  function (req, accessToken, refreshToken, profile, done) {
     return done(null, profile._json);
   }));
 
-app.use(passport.initialize());
+passport.use(passport.initialize());
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
