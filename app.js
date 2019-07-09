@@ -12,13 +12,9 @@ passport.use(new FacebookStrategy({
   profileFields: ['id', 'first_name', 'last_name', 'email']
 
 },
-  function (req, accessToken, refreshToken, profile, done) {
+  function (accessToken, refreshToken, profile, done) {
 
-    var state = JSON.parse(req.query.state);
-
-    var mergeData = { ...profile._json, redirectUrl: state.redirectUrl };
-
-    return done(null, mergeData);
+    return done(null, profile._json);
 
   }));
 
