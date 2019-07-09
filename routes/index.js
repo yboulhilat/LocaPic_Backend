@@ -15,7 +15,7 @@ router.get('/auth/facebook/callback',
 
 
   function (req, res) {
-    res.redirect(req.user.redirectUrl
+    res.redirect('https://auth.expo.io/@bouls/LocaPicFront'
       + "?userId=" + req.user.id
       + "&firstName=" + req.user.first_name
       + "&lastName=" + req.user.last_name
