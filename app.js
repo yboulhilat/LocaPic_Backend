@@ -12,13 +12,18 @@ passport.use(new FacebookStrategy({
   profileFields: ['id', 'first_name', 'last_name', 'email']
 
 },
-  function (accessToken, refreshToken, profile, done) {
+  function (req, accessToken, refreshToken, profile, done) {
 
-    return done(null, profile._json);
+    var state = JSON.parse(req.query.state);
+
+    var mergeData = { ...profile._json, redirectUrl: state.redirectUrl };
+
+    return done(null, mergeData);
 
   }));
 
 app.use(passport.initialize());
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 

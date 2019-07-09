@@ -15,7 +15,7 @@ router.get('/auth/facebook/callback',
 
 
   function (req, res) {
-    res.redirect('https://obscure-crag-47700.herokuapp.com/auth/facebook/'
+    res.redirect(req.user.redirectUrl
       + "?userId=" + req.user.id
       + "&firstName=" + req.user.first_name
       + "&lastName=" + req.user.last_name
