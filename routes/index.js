@@ -2,15 +2,6 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
-/* GET facebook callback. */
-/* GET facebook callback. */
-/* GET facebook callback. */
-/* GET facebook callback. */
-/* GET facebook callback. */
-/* GET facebook callback. */
-/* GET facebook callback. */
-/* GET facebook callback. */
-/* GET facebook callback. */
 
 
 /* GET facebook auth. */
@@ -24,7 +15,7 @@ router.get('/auth/facebook/callback',
 
 
   function (req, res) {
-    res.redirect(req.user.redirectUrl
+    res.redirect('https://obscure-crag-47700.herokuapp.com/auth/facebook/'
       + "?userId=" + req.user.id
       + "&firstName=" + req.user.first_name
       + "&lastName=" + req.user.last_name
