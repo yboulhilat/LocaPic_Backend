@@ -10,12 +10,9 @@ passport.use(new FacebookStrategy({
   clientSecret: "f3950a4a409067705d249c010de9f7d2",
   callbackURL: 'https://locapic2019.herokuapp.com/auth/facebook/callback',
   profileFields: ['id', 'first_name', 'last_name', 'email'],
-
 },
   function (accessToken, refreshToken, profile, done) {
-
     return done(null, profile._json);
-
   }));
 
 app.use(passport.initialize());
