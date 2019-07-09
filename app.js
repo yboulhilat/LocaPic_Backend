@@ -8,7 +8,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 passport.use(new FacebookStrategy({
   clientID: "450294218866907",
   clientSecret: "f3950a4a409067705d249c010de9f7d2",
-  callbackURL: 'https://obscure-crag-47700.herokuapp.com/auth/facebook/callback',
+  callbackURL: 'https://locapic2019.herokuapp.com/auth/facebook/callback',
   profileFields: ['id', 'first_name', 'last_name', 'email'],
 
 },
