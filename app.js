@@ -17,7 +17,7 @@ passport.use(new FacebookStrategy({
     return done(null, profile._json);
   }));
 
-passport.use(passport.initialize());
+
 
 
 var indexRouter = require('./routes/index');
@@ -34,7 +34,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(passport.initialize());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
