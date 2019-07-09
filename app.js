@@ -10,17 +10,11 @@ passport.use(new FacebookStrategy({
   clientSecret: "f3950a4a409067705d249c010de9f7d2",
   callbackURL: 'https://obscure-crag-47700.herokuapp.com/auth/facebook/callback',
   profileFields: ['id', 'first_name', 'last_name', 'email'],
-  passReqToCallback: true
-
 
 },
-  function (req, accessToken, refreshToken, profile, done) {
+  function (accessToken, refreshToken, profile, done) {
 
-    var state = JSON.parse(req.query.state);
-
-    var mergeData = { ...profile._json, redirectUrl: state.redirectUrl };
-
-    return done(null, mergeData);
+    return done(null, profile._json);
 
   }));
 

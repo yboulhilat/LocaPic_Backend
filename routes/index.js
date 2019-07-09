@@ -6,16 +6,15 @@ var passport = require('passport');
 
 /* GET facebook auth. */
 router.get('/auth/facebook',
-  passport.authenticate('facebook', { scope: 'email', state: JSON.stringify(req.query) })
+  passport.authenticate('facebook', { scope: 'email' })
 );
 
 /* GET facebook callback. */
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', { session: false }),
 
-
   function (req, res) {
-    res.redirect(req.user.redirectUrl
+    res.redirect('https://auth.expo.io/@bouls/LocaPicFront'
       + "?userId=" + req.user.id
       + "&firstName=" + req.user.first_name
       + "&lastName=" + req.user.last_name
