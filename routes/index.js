@@ -4,7 +4,11 @@ var passport = require('passport');
 
 /* GET facebook auth. */
 router.get('/auth/facebook',
-  passport.authenticate('facebook', { scope: 'email', state: JSON.stringify(req.query)  })
+  function (req, res, next) {
+    passport.authenticate(
+      'facebook', { scope: 'email', state: JSON.stringify(req.query) }
+    )(req, res, next);
+  }
 );
 
 /* GET facebook callback. */
