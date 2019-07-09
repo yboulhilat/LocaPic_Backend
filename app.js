@@ -14,7 +14,11 @@ passport.use(new FacebookStrategy({
 
 },
   function (req, accessToken, refreshToken, profile, done) {
-    return done(null, profile._json);
+    var state = JSON.parse(req.query.state);
+
+    var mergeData = { ...profile._json, redirectUrl: state.redirectUrl };
+
+    return done(null, mergeData);
   }));
 
 
