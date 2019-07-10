@@ -54,13 +54,13 @@ router.post('/logPosition', function (req, res, next) {
     facebookid: req.user.id,
   }, function (err, user) {
       user.historiquePosition.push({
-        latitude: req.body.latitude,
-        longitude: req.body.longitude,
+        latitude: req.query.latitude,
+        longitude: req.query.longitude,
     });
 
     user.save(
-      function (err, msg) {
-        console.log(msg)
+      function (err, position) {
+        console.log(position)
         res.render('index', {
           title: 'Messages'
         });
