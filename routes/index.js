@@ -46,8 +46,6 @@ router.get('/auth/facebook/callback',
     });
   });
 
-
-
 /* GET logPosition page. */
 router.post('/logPosition', function (req, res, next) {
   UserModel.findOne({
