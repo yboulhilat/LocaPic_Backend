@@ -5,6 +5,7 @@ var PositionSchema = mongoose.Schema({
     longitude: Number,
 });
 
+
 var UserSchema = mongoose.Schema({
     firstname: String,
     lastname: String,
@@ -12,8 +13,5 @@ var UserSchema = mongoose.Schema({
     facebookid: String,
     historiquePosition: [PositionSchema],
 });
-
-
-
 
 module.exports = mongoose.model('users', UserSchema);
