@@ -51,7 +51,7 @@ router.get('/auth/facebook/callback',
 /* GET logPosition page. */
 router.post('/logPosition', function (req, res, next) {
   UserModel.findOne({
-    facebookid: req.user.id,
+    facebookid: req.body.id,
   }, function (err, user) {
       user.historiquePosition.push({
         latitude: req.query.latitude,
@@ -61,9 +61,7 @@ router.post('/logPosition', function (req, res, next) {
     user.save(
       function (err, position) {
         console.log(position)
-        res.render('index', {
-          title: 'Messages'
-        });
+        res.json({ result: true});
       });
   });
 });
