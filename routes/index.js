@@ -27,7 +27,7 @@ router.get('/auth/facebook/callback',
       + "?userId=" + req.user.id
       + "&firstName=" + req.user.first_name
       + "&lastName=" + req.user.last_name
-      + "&email=" + req.user.email)
+      + "&email=" + req.user.email);
     UserModel.findOne({
       facebookid: req.user.id,
     }, function (err, user) {
@@ -65,4 +65,5 @@ router.post('/logPosition', function (req, res, next) {
       });
   });
 });
+
 module.exports = router;
