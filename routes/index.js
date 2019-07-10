@@ -27,6 +27,8 @@ router.get('/auth/facebook/callback',
       + "&firstName=" + req.user.first_name
       + "&lastName=" + req.user.last_name
       + "&email=" + req.user.email)
+
+      if (!user) {
     var newUser = new UserModel({
       firstname: req.user.first_name,
       lastname: req.user.last_name,
@@ -37,6 +39,7 @@ router.get('/auth/facebook/callback',
       function (err, user) {
         res.json({ result: true, user });
       });
+      }
   });
 // router.get('/auth/facebook/callback',
 //   passport.authenticate('facebook', { session: false }),
