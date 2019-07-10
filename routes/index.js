@@ -26,7 +26,7 @@ router.get('/auth/facebook/callback',
       + "?userId=" + req.user.id
       + "&firstName=" + req.user.first_name
       + "&lastName=" + req.user.last_name
-      + "&email=" + req.user.email);
+      + "&email=" + req.user.email)
     var newUser = new UserModel({
       firstname: req.user.first_name,
       lastname: req.user.last_name,
@@ -57,7 +57,6 @@ router.post('/logPosition', function (req, res, next) {
     facebookid: req.user.id,
   }, function (err, user) {
       user.historiquePosition.push({
-
         latitude: req.body.latitude,
         longitude: req.body.longitude,
 
