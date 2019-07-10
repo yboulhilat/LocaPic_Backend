@@ -17,6 +17,7 @@ router.get('/auth/facebook',
 );
 
 /* GET facebook callback. */
+/* GET facebook callback. */
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', { session: false }),
 
@@ -26,8 +27,29 @@ router.get('/auth/facebook/callback',
       + "&firstName=" + req.user.first_name
       + "&lastName=" + req.user.last_name
       + "&email=" + req.user.email);
-  }
-);
+    var newUser = new UserModel({
+      firstname: req.user.first_name,
+      lastname: req.user.last_name,
+      email: req.user.email,
+      facebookid: req.user.id
+    });
+    newUser.save(
+      function (err, user) {
+        res.json({ result: true, user });
+      });
+  });
+// router.get('/auth/facebook/callback',
+//   passport.authenticate('facebook', { session: false }),
+  
+//   function (req, res) {
+//     res.redirect(req.user.redirectUrl
+//       + "?userId=" + req.user.id
+//       + "&firstName=" + req.user.first_name
+//       + "&lastName=" + req.user.last_name
+//       + "&email=" + req.user.email);
+//   });
+
+
 
 /* GET logPosition page. */
 router.post('/logPosition', function (req, res, next) {
