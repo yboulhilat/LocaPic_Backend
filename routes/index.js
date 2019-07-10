@@ -49,7 +49,7 @@ router.get('/auth/facebook/callback',
 /* logPosition page. */
 router.post('/logPosition', function (req, res, next) {
   UserModel.findOne({
-    facebookid: req.body.id,
+    facebookid: req.body.facebookid,
   }, function (err, user) {
       user.historiquePosition.push({
         latitude: req.body.latitude,
