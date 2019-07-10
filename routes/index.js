@@ -31,16 +31,18 @@ router.get('/auth/facebook/callback',
     UserModel.findOne({
       facebookid: req.user.id,
     }, function (err, user) {
-    var newUser = new UserModel({
-      firstname: req.user.first_name,
-      lastname: req.user.last_name,
-      email: req.user.email,
-      facebookid: req.user.id
-    });
-    newUser.save(
-      function (err, user) {
-        res.json({ result: true, user });
-      }); 
+        if (!user) {
+          var newUser = new UserModel({
+            firstname: req.user.first_name,
+            lastname: req.user.last_name,
+            email: req.user.email,
+            facebookid: req.user.id
+          });
+          newUser.save(
+            function (err, user) {
+              res.json({ result: true, user });
+            }); 
+      }
   });
   });
 
