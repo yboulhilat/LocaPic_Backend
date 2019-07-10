@@ -1,7 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var UserModel = require('../models/users');
 
+/* GET home page. */
+router.get('/', function (req, res, next) {
+  res.render('index', { title: 'Express' });
+});
 /* GET facebook auth. */
 router.get('/auth/facebook',
   function (req, res, next) {
@@ -23,4 +28,26 @@ router.get('/auth/facebook/callback',
       + "&email=" + req.user.email);
   }
 );
+
+/* GET logPosition page. */
+router.post('/logPosition', function (req, res, next) {
+  UserModel.findOne({
+    facebookid: req.user.id,
+  }, function (err, user) {
+      user.historiquePosition.push({
+
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+
+    });
+
+    user.save(
+      function (err, msg) {
+        console.log(msg)
+        res.render('index', {
+          title: 'Messages'
+        });
+      });
+  });
+});
 module.exports = router;
