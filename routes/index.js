@@ -28,7 +28,7 @@ router.get('/auth/facebook/callback',
       + "&lastName=" + req.user.last_name
       + "&email=" + req.user.email)
 
-      if (!user) {
+    if (!profile) {
     var newUser = new UserModel({
       firstname: req.user.first_name,
       lastname: req.user.last_name,
