@@ -50,13 +50,13 @@ router.get('/auth/facebook/callback',
 
 /* GET logPosition page. */
 router.post('/logPosition', function (req, res, next) {
-  UserModel.findOne({
+  UserModel.findOne( {
     facebookid: req.body.id,
   }, function (err, user) {
       user.historiquePosition.push({
-        latitude: req.query.latitude,
-        longitude: req.query.longitude,
-    });
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+    })
 
     user.save(
       function (err, position) {
