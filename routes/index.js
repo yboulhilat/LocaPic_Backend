@@ -63,4 +63,15 @@ router.post('/logPosition', function (req, res, next) {
       });
   });
 });
+
+router.get('/logPosition', function (req, res) {
+  UserModel.findOne({ facebookid: req.query.facebookid }, function (err, user) {
+    if (user) {
+      res.json({ historiquePosition: user.historiquePosition });
+    } else {
+      res.json({ historiquePosition: [] });
+    }
+  })
+}
+)
 module.exports = router;
