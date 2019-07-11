@@ -22,8 +22,10 @@ app.set('port', port);
 var server = http.createServer(app);
 const io = require('socket.io')(server);
 io.on('connection', client => {
+  console.log(client)
   client.on('sendMessage', data => {
     client.emit('sendMessage', data);
+    console.log(data)
    });
   client.on('Déconnecté', () => { /* … */ });
 });
