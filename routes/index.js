@@ -16,7 +16,7 @@ router.get('/auth/facebook',
   }
 );
 
-/* GET facebook callback. */
+
 /* GET facebook callback. */
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', { session: false }),
