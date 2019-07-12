@@ -48,7 +48,7 @@ router.get('/auth/facebook/callback',
     });
   });
 
-/* logPosition page. */
+/* logPosition. */
 router.post('/logPosition', function (req, res, next) {
   UserModel.findOne({
     facebookid: req.body.facebookid,
