@@ -60,7 +60,7 @@ router.post('/logPosition', function (req, res, next) {
     user.save(
       function (err, position) {
         console.log(position)
-        res.render('index', { title: 'Express' });
+        res.json({ result: true });
       });
   });
 });
