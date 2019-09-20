@@ -5,7 +5,7 @@ var options = {
     useNewUrlParser: true
 };
 
-mongoose.connect('mongodb+srv://bouls:Bouls08128989@yousseflacapsule-hmk9t.mongodb.net/LocaPic?retryWrites=true&w=majority',
+mongoose.connect('////',
     options,
     function (err) {
         if (err) {
